@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('product');
             $table->decimal('price', 8, 2);
-            $table->decimal('purcse_price', 8, 2);
+            $table->decimal('purchase_price', 8, 2);
             $table->integer('stock');
             $table->string('image')->nullable();
             $table->timestamps();
