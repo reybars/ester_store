@@ -1,14 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/products', function () {
-    return view('product_view');
-});
+Route::get('/products', [ProductController::class, 'index']);
 
 Route::get('/about', function () {
     return view('about');
