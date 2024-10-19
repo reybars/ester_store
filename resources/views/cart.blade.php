@@ -59,17 +59,22 @@
                   </thead>
                   <tbody class="bg-white divide-y divide-gray-200">
                       <tr>
-                          <td class="px-6 py-4 whitespace-nowrap">Product A</td>
-                          <td class="px-6 py-4 whitespace-nowrap">$19.99</td>
+                        @foreach($cartItems as $item)
+                          <td class="px-6 py-4 whitespace-nowrap">{{ $item->product->name }}</td>
+                          <td class="px-6 py-4 whitespace-nowrap">${{ number_format($item->product->price, 2) }}</td>
                           <td class="px-6 py-4 whitespace-nowrap">
-                              <input type="number" value="2" min="1" class="w-16 px-2 py-1 border rounded-md">
+                              <input type="number" value="{{ $item->quantity }}" min="1" class="w-16 px-2 py-1 border rounded-md" data-item-id="{{ $item->id }}">
                           </td>
-                          <td class="px-6 py-4 whitespace-nowrap">$39.98</td>
+                          <td class="px-6 py-4 whitespace-nowrap">${{ number_format($item->product->price * $item->quantity, 2) }}</td>
                           <td class="px-6 py-4 whitespace-nowrap">
-                              <button class="text-red-600 hover:text-red-900">Remove</button>
+                              <form action="{{ route('cart.remove', $item->id) }}" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit" class="text-red-600 hover:text-red-900">Remove</button>
+                              </form>
                           </td>
                       </tr>
-                      <tr>
+                        @endforeach                      <tr>
                           <td class="px-6 py-4 whitespace-nowrap">Product B</td>
                           <td class="px-6 py-4 whitespace-nowrap">$24.99</td>
                           <td class="px-6 py-4 whitespace-nowrap">
@@ -86,8 +91,11 @@
           <div class="mt-8 flex justify-end">
               <div class="bg-gray-100 p-6 rounded-lg">
                   <h3 class="text-lg font-semibold mb-4">Cart Total</h3>
-                  <p class="text-xl font-bold">$64.97</p>
-                  <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Proceed to Checkout</button>
+                  <p class="text-xl font-bold">${{ number_format($cartItems->sum(function($item) { return $item->product->price * $item->quantity; }), 2) }}</p>
+                  <form action="{{ route('checkout.process') }}" method="POST">
+                      @csrf
+                      <button type="submit" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Proceed to Checkout</button>
+                  </form>
               </div>
           </div>
       </div>

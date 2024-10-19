@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class ProductController extends Controller
 {
@@ -26,4 +27,25 @@ class ProductController extends Controller
         return view('cart', compact('cartItems', 'total'));
     }
     
+    public function addToCart(Request $request)
+    {
+        $id = $request->input('product_id');
+        $product = Product::findOrFail($id);
+        $cart = session()->get('cart', []);
+
+        if (isset($cart[$id])) {
+            $cart[$id]['quantity']++;
+        } else {
+            $cart[$id] = [
+                "name" => $product->product,
+                "quantity" => 1,
+                "price" => $product->price,
+                "image" => $product->image
+            ];
+        }
+
+        session()->put('cart', $cart);
+        dd(session()->all());
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
 }

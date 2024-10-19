@@ -16,3 +16,5 @@ Route::get('/about', function () {
 Route::get('/cart', function () {
     return view('cart');
 });
+
+Route::post('/cart', [ProductController::class, 'addToCart'])->name('cart.add');

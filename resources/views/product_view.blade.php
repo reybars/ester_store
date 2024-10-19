@@ -72,144 +72,20 @@
                 <img src="{{ $product->image }}" alt="Coca-Cola 1-litre" class="w-full h-48 object-cover mb-4">
                 <h2 class="text-xl font-semibold mb-2">{{ $product->product }}</h2>
                 <p class="text-gray-600 mb-4">₱ {{ $product->price }}</p>
-                <button class="flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    Add to Cart
-                </button>
+                <form action="{{ route('cart.add') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <button type="submit" class="flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        Add to Cart
+                    </button>
+                </form>
             </div>
             @endforeach
 
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <img src="{{ asset('images/Quickchow beef.png')}}" alt="Quickchow beef" class="w-full h-48 object-cover mb-4">
-                <h2 class="text-xl font-semibold mb-2">Quickchow beef</h2>
-                <p class="text-gray-600 mb-4">₱ 12.00</p>
-                <button class="flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    Add to Cart
-                </button>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <img src="{{ asset('images/egg.png')}}" alt="Egg XL" class="w-full h-48 object-cover mb-4">
-                <h2 class="text-xl font-semibold mb-2">Egg XL</h2>
-                <p class="text-gray-600 mb-4">₱ 12.00</p>
-                <button class="flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    Add to Cart
-                </button>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <img src="{{ asset('images/Red Horse litro.png')}}" alt="Red Horse Beer 1L" class="w-full h-48 object-cover mb-4">
-                <h2 class="text-xl font-semibold mb-2">Red Horse Beer 1L</h2>
-                <p class="text-gray-600 mb-4">₱ 140.00</p>
-                <button class="flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    Add to Cart
-                </button>
-            </div>
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <img src="{{ asset('images/coke.png')}}" alt="Coca-Cola 1-litre" class="w-full h-48 object-cover mb-4">
-                <h2 class="text-xl font-semibold mb-2">Coca-Cola 1-litre</h2>
-                <p class="text-gray-600 mb-4">₱ 50.00</p>
-                <button class="flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    Add to Cart
-                </button>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <img src="{{ asset('images/Quickchow beef.png')}}" alt="Quickchow beef" class="w-full h-48 object-cover mb-4">
-                <h2 class="text-xl font-semibold mb-2">Quickchow beef</h2>
-                <p class="text-gray-600 mb-4">₱ 12.00</p>
-                <button class="flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    Add to Cart
-                </button>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <img src="{{ asset('images/egg.png')}}" alt="Egg XL" class="w-full h-48 object-cover mb-4">
-                <h2 class="text-xl font-semibold mb-2">Egg XL</h2>
-                <p class="text-gray-600 mb-4">₱ 12.00</p>
-                <button class="flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    Add to Cart
-                </button>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <img src="{{ asset('images/Red Horse litro.png')}}" alt="Red Horse Beer 1L" class="w-full h-48 object-cover mb-4">
-                <h2 class="text-xl font-semibold mb-2">Red Horse Beer 1L</h2>
-                <p class="text-gray-600 mb-4">₱ 140.00</p>
-                <button class="flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    Add to Cart
-                </button>
-            </div>
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <img src="{{ asset('images/coke.png')}}" alt="Coca-Cola 1-litre" class="w-full h-48 object-cover mb-4">
-                <h2 class="text-xl font-semibold mb-2">Coca-Cola 1-litre</h2>
-                <p class="text-gray-600 mb-4">₱ 50.00</p>
-                <button class="flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    Add to Cart
-                </button>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <img src="{{ asset('images/Quickchow beef.png')}}" alt="Quickchow beef" class="w-full h-48 object-cover mb-4">
-                <h2 class="text-xl font-semibold mb-2">Quickchow beef</h2>
-                <p class="text-gray-600 mb-4">₱ 12.00</p>
-                <button class="flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    Add to Cart
-                </button>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <img src="{{ asset('images/egg.png')}}" alt="Egg XL" class="w-full h-48 object-cover mb-4">
-                <h2 class="text-xl font-semibold mb-2">Egg XL</h2>
-                <p class="text-gray-600 mb-4">₱ 12.00</p>
-                <button class="flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    Add to Cart
-                </button>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <img src="{{ asset('images/Red Horse litro.png')}}" alt="Red Horse Beer 1L" class="w-full h-48 object-cover mb-4">
-                <h2 class="text-xl font-semibold mb-2">Red Horse Beer 1L</h2>
-                <p class="text-gray-600 mb-4">₱ 140.00</p>
-                <button class="flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    Add to Cart
-                </button>
-            </div>
+            
         </div>
     </div>
 </body>
