@@ -15,17 +15,17 @@ class ProductController extends Controller
         return view('product_view', compact('products'));
     }
 
-    public function removeFromCart(Request $request, $id)
-        {
-            $cart = session()->get('cart', []);
+    // public function removeFromCart(Request $request, $id)
+    //     {
+    //         $cart = session()->get('cart', []);
     
-            if (isset($cart[$id])) {
-                unset($cart[$id]);
-                session()->put('cart', $cart);
-            }
+    //         if (isset($cart[$id])) {
+    //             unset($cart[$id]);
+    //             session()->put('cart', $cart);
+    //         }
     
-            return redirect()->back()->with('success', 'Product removed from cart successfully!');
-        }
+    //         return redirect()->back()->with('success', 'Product removed from cart successfully!');
+    //     }
      
 
     public function cart()
@@ -63,4 +63,16 @@ class ProductController extends Controller
       
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
+
+    public function removeFromCart($id)
+    {
+        $cart = session()->get('cart', []);
+
+        if (isset($cart[$id])) {
+            unset($cart[$id]);
+            session()->put('cart', $cart);
+        }
+
+        return redirect()->back()->with('success', 'Product removed from cart successfully!');
+    }    
 }

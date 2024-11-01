@@ -68,11 +68,11 @@
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">${{ number_format($item['price'] * $item['quantity'], 2) }}</td>
                           <td class="px-6 py-4 whitespace-nowrap">
-                              {{-- <form action="{{ route('cart.remove', $id) }}" method="POST">
+                              <form action="{{ route('cart.remove', $id) }}" method="POST">
                                   @csrf
                                   @method('DELETE')
                                   <button type="submit" class="text-red-600 hover:text-red-900">Remove</button>
-                              </form> --}}
+                              </form>
                           </td>
                       </tr>
                       @endforeach                  </tbody>
