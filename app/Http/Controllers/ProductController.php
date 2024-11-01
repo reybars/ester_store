@@ -15,15 +15,30 @@ class ProductController extends Controller
         return view('product_view', compact('products'));
     }
 
+    public function removeFromCart(Request $request, $id)
+        {
+            $cart = session()->get('cart', []);
+    
+            if (isset($cart[$id])) {
+                unset($cart[$id]);
+                session()->put('cart', $cart);
+            }
+    
+            return redirect()->back()->with('success', 'Product removed from cart successfully!');
+        }
+     
+
     public function cart()
     {
         $cartItems = session()->get('cart', []);
         $total = 0;
 
-        foreach ($cartItems as $item) {
+        foreach ($cartItems as $id => &$item) {
+            $item['id'] = $id;
             $total += $item['price'] * $item['quantity'];
-        }
 
+        }
+        
         return view('cart', compact('cartItems', 'total'));
     }
     
@@ -45,7 +60,7 @@ class ProductController extends Controller
         }
 
         session()->put('cart', $cart);
-        dd(session()->all());
+      
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 }
