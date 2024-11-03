@@ -66,7 +66,7 @@
                           <td class="px-6 py-4 whitespace-nowrap">
                               <input type="number" value="{{ $item['quantity'] }}" min="1" class="w-16 px-2 py-1 border rounded-md" data-item-id="{{ $id }}">
                           </td>
-                          <td class="px-6 py-4 whitespace-nowrap">${{ number_format($item['price'] * $item['quantity'], 2) }}</td>
+                          <td class="px-6 py-4 whitespace-nowrap">₱{{ number_format($item['price'] * $item['quantity'], 2) }}</td>
                           <td class="px-6 py-4 whitespace-nowrap">
                               <form action="{{ route('cart.remove', $id) }}" method="POST">
                                   @csrf
@@ -75,30 +75,14 @@
                               </form>
                           </td>
                       </tr>
-                      @endforeach                  </tbody>
-                                             <tr>
-                          <td class="px-6 py-4 whitespace-nowrap">Product B</td>
-                          <td class="px-6 py-4 whitespace-nowrap">$24.99</td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                              <input type="number" value="1" min="1" class="w-16 px-2 py-1 border rounded-md">
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">$24.99</td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                              <button class="text-red-600 hover:text-red-900">Remove</button>
-                          </td>
-                      </tr>
+                      @endforeach
                   </tbody>
               </table>
           </div>
           <div class="mt-8 flex justify-end">
               <div class="bg-gray-100 p-6 rounded-lg">
                   <h3 class="text-lg font-semibold mb-4">Cart Total</h3>
-                  <p class="text-xl font-bold">${{ number_format($total, 2) }}</p>
-                  {{-- <form action="{{ route('checkout.process') }}" method="POST">
-                      @csrf
-                      <button type="submit" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Proceed to Checkout</button>
-                  </form> --}}
+                  <p class="text-xl font-bold">₱{{ number_format($total, 2) }}</p>
               </div>
-          </div>
-      </div>
+          </div>      </div>
 </body>
