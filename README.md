@@ -5,7 +5,7 @@ PHP
 Laravel
 filament
 tailwindcss
-and a little bit of Vanella JavaScript.
+and a little bit of Vanilla JavaScript.
 
 **Home page**
 ![{C8914F4D-E7FB-41E0-8236-743D4AEB1774}](https://github.com/user-attachments/assets/fcb40fcb-c41d-4160-9788-345dd54b50ff)
